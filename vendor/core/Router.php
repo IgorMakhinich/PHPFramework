@@ -19,16 +19,22 @@ class Router
 	{
 		self::$routes[$regexp] = $route;
 	}
-
-	// Returns the route table
-	// @return array
+	
+	/**
+	 * eturns the route table
+	 *
+	 * @return array
+	 */
 	public static function getRoutes()
 	{
 		return self::$routes;
 	}
-
-	// Returns the current route (controller, action, [params])
-	// @return array
+		
+	/**
+	 * Returns the current route (controller, action, [params])
+	 *
+	 * @return array
+	 */
 	public static function getRoute()
 	{
 		return self::$route;
@@ -57,13 +63,16 @@ class Router
 		return false;
 	}
 
-	// Redirect URL to the correct route
-	// @param string $url входящий URL
-	// return void
+	/**
+	 * dispatch Redirect URL to the correct route
+	 *
+	 * @param  string $url input URL
+	 * @return void
+	 */
 	public static function dispatch($url)
 	{
 		$url = self::removeQueryString($url);
-		var_dump($url);
+		// var_dump($url);
 		if (self::matchRoute($url)) {
 			// $controller = self::$route['controller'];
 			// self::upperCamelCase($controller);
@@ -72,9 +81,10 @@ class Router
 			if (class_exists($controller)) {
 				$cObj = new $controller(self::$route);
 				$action = self::lowerCamelCase(self::$route['action']) . 'Action';
-				debug($action);
+				// debug($action);
 				if (method_exists($cObj, $action)) {
 					$cObj->$action();
+					$cObj->getView();
 				} else {
 					echo "Method <b>$controller::$action</b> not found";
 				}

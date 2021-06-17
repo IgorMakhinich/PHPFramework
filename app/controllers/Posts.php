@@ -1,8 +1,8 @@
-<?php
+[<?php
 
 namespace app\controllers;
 
-class Posts extends \vendor\core\base\Controller
+class Posts extends App
 {
 	public function indexAction()
 	{
@@ -15,3 +15,4 @@ class Posts extends \vendor\core\base\Controller
 		echo "Posts::test";
 	}
 }
+]
