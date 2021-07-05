@@ -13,6 +13,10 @@
    <h1>Default</h1>
 
    <?=$content?>
+
+   <?=debug(vendor\core\Db::$countSql)?>
+   <?=debug(vendor\core\Db::$queries)?>
+
    <script src="/bootstrap/js/bootstrap.min.js"></script>
 </body>
 

@@ -76,7 +76,7 @@ class Router
 		if (self::matchRoute($url)) {
 			// $controller = self::$route['controller'];
 			// self::upperCamelCase($controller);
-			$controller = 'app\controllers\\' . self::$route['controller'];
+			$controller = 'app\controllers\\' . self::$route['controller'] . 'Controller';
 			// debug(self::$route);
 			if (class_exists($controller)) {
 				$cObj = new $controller(self::$route);
